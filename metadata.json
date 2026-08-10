@@ -1,0 +1,6 @@
+{
+  "name": "Interactive Developer Portfolio",
+  "description": "A luxury, Awwwards-inspired interactive developer portfolio with 3D canvas visualizers, smooth animations, and interactive showcases.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
