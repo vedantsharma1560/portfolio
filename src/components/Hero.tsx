@@ -47,13 +47,13 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume, onNavigate
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
             
             {/* Availability Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/40 text-[#0d9488] dark:text-[#2cc1b5] text-xs font-mono w-fit shadow-sm dark:shadow-lg dark:shadow-[#050e0d]/50 font-semibold">
+            {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/40 text-[#0d9488] dark:text-[#2cc1b5] text-xs font-mono w-fit shadow-sm dark:shadow-lg dark:shadow-[#050e0d]/50 font-semibold">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0d9488] dark:bg-[#20938a] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0d9488] dark:bg-[#20938a]"></span>
               </span>
               <span>{PERSONAL_INFO.availability}</span>
-            </div>
+            </div> */}
 
             {/* Clean Minimal Integrated Heading */}
             <div className="space-y-3">
