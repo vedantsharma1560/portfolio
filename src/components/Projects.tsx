@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { Project } from '../types';
 import { ProjectModal } from './ProjectModal';
@@ -36,12 +36,12 @@ export const Projects: React.FC = () => {
             >
               
               <div>
-                {/* Project Image Box with Hover Zoom */}
-                <div className="relative h-56 sm:h-64 overflow-hidden bg-slate-900">
+                {/* Project Image Box with Fit Content */}
+                <div className="relative h-56 sm:h-64 overflow-hidden bg-slate-900 flex items-center justify-center p-3">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                    className="max-h-full max-w-full w-auto object-contain group-hover:scale-105 transition-transform duration-700 opacity-95 group-hover:opacity-100 rounded-lg"
                   />
 
                   {/* Gradient Overlay */}
@@ -111,15 +111,6 @@ export const Projects: React.FC = () => {
                 </button>
 
                 <div className="flex items-center gap-2">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 rounded-lg text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#081716] transition-colors"
-                    aria-label="GitHub Repository"
-                  >
-                    <Github className="w-4 h-4" />
-                  </a>
                   <a
                     href={project.demoUrl}
                     target="_blank"

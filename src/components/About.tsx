@@ -23,7 +23,7 @@ export const About: React.FC = () => {
     {
       icon: Compass,
       title: 'High-Throughput Databases',
-      desc: 'Optimized schema indexing across PostgreSQL, MongoDB, MySQL, Oracle DB, and Elasticsearch full-text search.'
+      desc: 'Optimized schema indexing across PostgreSQL, MongoDB, MySQL, Oracle DB, and Elasticsearch wild-card search.'
     }
   ];
 
@@ -40,7 +40,7 @@ export const About: React.FC = () => {
             Architecting High-Performance <span className="text-[#0d9488] dark:text-[#2cc1b5]">Enterprise Systems</span>
           </h2>
           <p className="mt-4 text-slate-600 dark:text-gray-400 text-base sm:text-lg">
-            Engineering resilient microservices, secure authorization vaults, and real-time data pipelines for industry leaders.
+            Engineering resilient microservices, secure authorization layers, and real-time data pipelines for industry leaders.
           </p>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ExternalLink, Github, Layers, CheckCircle2, AlertTriangle, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ExternalLink, Layers, CheckCircle2, AlertTriangle, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from '../types';
 
 interface ProjectModalProps {
@@ -50,11 +50,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         <div className="p-6 sm:p-8 space-y-8 max-h-[80vh] overflow-y-auto">
           
           {/* Main Screenshot Carousel */}
-          <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#20938a]/30 bg-slate-900 group">
+          <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#20938a]/30 bg-slate-900 group flex items-center justify-center p-2 sm:p-4">
             <img
               src={project.screenshots[activeImageIdx] || project.image}
               alt={project.title}
-              className="w-full h-[320px] sm:h-[450px] object-cover transition-all duration-500"
+              className="max-h-[320px] sm:max-h-[450px] max-w-full w-auto object-contain transition-all duration-500 rounded-lg"
             />
 
             {/* Carousel Navigation Arrows */}
@@ -206,21 +206,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <ExternalLink className="w-4 h-4" />
                 Live Demo
               </a>
-
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3 rounded-xl bg-slate-100 dark:bg-[#0c2120] border border-slate-200 dark:border-[#20938a]/30 text-slate-900 dark:text-white font-medium text-xs hover:border-[#0d9488]/60 dark:hover:border-[#20938a]/60 transition-all flex items-center gap-2"
-              >
-                <Github className="w-4 h-4 text-[#0d9488] dark:text-[#2cc1b5]" />
-                GitHub Repository
-              </a>
             </div>
 
             <button
               onClick={() => onClose()}
-              className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-[#0c2120] border border-slate-200 dark:border-[#20938a]/30 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white text-xs font-mono font-semibold"
+              className="px-5 py-3 rounded-xl bg-slate-100 dark:bg-[#0c2120] border border-slate-200 dark:border-[#20938a]/30 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white text-xs font-mono font-semibold cursor-pointer"
             >
               Close Window
             </button>

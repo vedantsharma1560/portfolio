@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Cpu, Sparkles, Code, Server, Bot, Cloud, Database, Layers, 
   FileCode, Box, Palette, Terminal, Network, Zap, HardDrive, GitBranch, 
-  Wrench, Layout, Shield, Grid, LayoutList, X, CheckCircle2, ArrowUpRight
+  Wrench, Layout, Shield, Grid, LayoutList
 } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 import { SkillCategory } from '../types';
@@ -30,13 +30,6 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Shield,
 };
 
-// Helper for proficiency tier based on level
-const getProficiencyBadge = (level: number) => {
-  if (level >= 95) return { label: 'Expert', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' };
-  if (level >= 90) return { label: 'Advanced', color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30' };
-  return { label: 'Proficient', color: 'text-teal-400 bg-teal-500/10 border-teal-500/30' };
-};
-
 // Core featured technologies for quick spotlight
 const CORE_SPOTLIGHT = [
   { name: 'Angular', category: 'Front-End', icon: Code, desc: 'Enterprise RXJS modules & RBAC' },
@@ -47,19 +40,9 @@ const CORE_SPOTLIGHT = [
   { name: 'Kong API', category: 'Security', icon: Shield, desc: 'Gateway proxy & OAuth rate limits' },
 ];
 
-interface SkillDetail {
-  name: string;
-  level: number;
-  iconName: string;
-  description: string;
-  yearsOfExperience: number;
-  categoryName: string;
-}
-
 export const Skills: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [viewMode, setViewMode] = useState<'compact' | 'cards'>('compact');
-  const [activeSkillModal, setActiveSkillModal] = useState<SkillDetail | null>(null);
 
   const categories = ['All', ...SKILL_CATEGORIES.map((c) => c.name)];
 
@@ -95,7 +78,7 @@ export const Skills: React.FC = () => {
                 <Zap className="w-4 h-4 text-[#0d9488] dark:text-[#2cc1b5]" />
                 Primary Stack Spotlight
               </h3>
-              <span className="text-[11px] font-mono text-slate-500 dark:text-gray-400 font-semibold">3+ Years Core Focus</span>
+              <span className="text-[11px] font-mono text-slate-500 dark:text-gray-400 font-semibold">3.5+ Years Core Focus</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -205,69 +188,59 @@ export const Skills: React.FC = () => {
                   </span>
                 </div>
 
-                {/* COMPACT BADGES VIEW (Ultra-clean, modern, highly scannable) */}
+                {/* COMPACT BADGES VIEW */}
                 {viewMode === 'compact' ? (
                   <div className="flex flex-wrap gap-3">
                     {category.skills.map((skill) => {
                       const IconComponent = ICON_MAP[skill.iconName] || Code;
-                      const badge = getProficiencyBadge(skill.level);
                       return (
                         <div
                           key={skill.name}
-                          onClick={() => setActiveSkillModal({ ...skill, categoryName: category.name })}
-                          className="group px-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 hover:border-[#0d9488] dark:hover:border-[#2cc1b5] hover:bg-slate-50 dark:hover:bg-[#122223] transition-all duration-200 flex items-center gap-3 cursor-pointer shadow-md shadow-slate-200/50 dark:shadow-md hover:-translate-y-0.5"
+                          className="group px-3.5 py-3 rounded-2xl border border-slate-200 dark:border-[#20938a]/30 bg-white dark:bg-[#0e171a]/95 flex flex-col justify-between gap-2.5 shadow-md shadow-slate-200/50 dark:shadow-md min-w-[150px] sm:min-w-[170px] flex-1 max-w-[220px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0d9488]/10 dark:hover:shadow-[#2cc1b5]/20 hover:border-[#0d9488]/60 dark:hover:border-[#2cc1b5]/60 hover:bg-slate-50/90 dark:hover:bg-[#112425]"
                         >
-                          <div className="w-7 h-7 rounded-lg bg-teal-50 dark:bg-[#081716] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <IconComponent className="w-3.5 h-3.5" />
-                          </div>
-                          <div>
+                          <div className="flex items-center justify-between gap-2">
                             <div className="flex items-center gap-2">
-                              <span className="text-slate-900 dark:text-white font-bold text-xs font-heading group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">
+                              <div className="w-7 h-7 rounded-lg bg-teal-50 dark:bg-[#081716] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <IconComponent className="w-3.5 h-3.5" />
+                              </div>
+                              <span className="text-slate-900 dark:text-white font-bold text-xs sm:text-sm font-heading truncate group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">
                                 {skill.name}
                               </span>
-                              <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded-md border ${badge.color}`}>
-                                {badge.label}
-                              </span>
                             </div>
-                            <span className="text-[10px] text-slate-500 dark:text-gray-400 font-mono block">
-                              {skill.yearsOfExperience} Yrs Exp • Click for info
+                            <span className="text-[10px] font-mono font-bold text-[#0d9488] dark:text-[#2cc1b5] shrink-0">
+                              {skill.level}%
                             </span>
+                          </div>
+
+                          {/* Enhanced Proficiency Progress Bar with Fade Glow & Border */}
+                          <div className="w-full bg-slate-100 dark:bg-[#051313] h-2 rounded-full p-[1px] border border-slate-200/80 dark:border-[#20938a]/40 shadow-inner">
+                            <div
+                              className="bg-gradient-to-r from-[#0d9488] via-[#14b8a6] to-[#2cc1b5] dark:from-[#0d9488]/80 dark:via-[#2cc1b5] dark:to-[#5eead4] h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(44,193,181,0.4)] dark:shadow-[0_0_10px_rgba(44,193,181,0.6)] group-hover:brightness-110"
+                              style={{ width: `${skill.level}%` }}
+                            />
                           </div>
                         </div>
                       );
                     })}
                   </div>
                 ) : (
-                  /* CARDS MATRIX VIEW (Clean cards without heavy text blocks) */
+                  /* CARDS MATRIX VIEW */
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {category.skills.map((skill) => {
                       const IconComponent = ICON_MAP[skill.iconName] || Code;
-                      const badge = getProficiencyBadge(skill.level);
                       return (
                         <div
                           key={skill.name}
-                          onClick={() => setActiveSkillModal({ ...skill, categoryName: category.name })}
-                          className="p-4 rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 hover:border-[#0d9488] dark:hover:border-[#2cc1b5] hover:bg-slate-50 dark:hover:bg-[#122223] transition-all duration-300 group flex flex-col justify-between shadow-lg shadow-slate-200/50 dark:shadow-lg cursor-pointer hover:-translate-y-1"
+                          className="group p-4 rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 flex flex-col justify-between gap-3 shadow-lg shadow-slate-200/50 dark:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0d9488]/10 dark:hover:shadow-[#2cc1b5]/20 hover:border-[#0d9488]/60 dark:hover:border-[#2cc1b5]/60 hover:bg-slate-50/90 dark:hover:bg-[#112425]"
                         >
                           <div>
-                            <div className="flex items-center justify-between mb-2">
-                              <div className="flex items-center gap-3">
-                                <div className="w-9 h-9 rounded-xl bg-teal-50 dark:bg-[#081716] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center group-hover:scale-105 transition-transform">
-                                  <IconComponent className="w-4 h-4" />
-                                </div>
-                                <div>
-                                  <h4 className="text-slate-900 dark:text-white font-bold text-sm font-heading group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">
-                                    {skill.name}
-                                  </h4>
-                                  <span className="text-[10px] text-slate-500 dark:text-gray-400 font-mono">
-                                    {skill.yearsOfExperience} Years Experience
-                                  </span>
-                                </div>
+                            <div className="flex items-center gap-3 mb-2">
+                              <div className="w-9 h-9 rounded-xl bg-teal-50 dark:bg-[#081716] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <IconComponent className="w-4 h-4" />
                               </div>
-
-                              <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${badge.color}`}>
-                                {badge.label}
-                              </span>
+                              <h4 className="text-slate-900 dark:text-white font-bold text-sm font-heading group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">
+                                {skill.name}
+                              </h4>
                             </div>
 
                             <p className="text-slate-600 dark:text-gray-400 text-xs leading-relaxed line-clamp-2 my-2">
@@ -275,9 +248,18 @@ export const Skills: React.FC = () => {
                             </p>
                           </div>
 
-                          <div className="pt-2 flex items-center justify-between border-t border-slate-200 dark:border-[#20938a]/15 text-[11px] font-mono text-[#0d9488] dark:text-[#2cc1b5]">
-                            <span>View details & projects</span>
-                            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          {/* Enhanced Proficiency Progress Bar */}
+                          <div className="pt-2 border-t border-slate-200 dark:border-[#20938a]/15 space-y-1.5">
+                            <div className="flex items-center justify-between text-[11px] font-mono font-medium">
+                              <span className="text-slate-500 dark:text-gray-400">Proficiency</span>
+                              <span className="text-[#0d9488] dark:text-[#2cc1b5] font-bold">{skill.level}%</span>
+                            </div>
+                            <div className="w-full bg-slate-100 dark:bg-[#051313] h-2 rounded-full p-[1px] border border-slate-200/80 dark:border-[#20938a]/40 shadow-inner">
+                              <div
+                                className="bg-gradient-to-r from-[#0d9488] via-[#14b8a6] to-[#2cc1b5] dark:from-[#0d9488]/80 dark:via-[#2cc1b5] dark:to-[#5eead4] h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(44,193,181,0.4)] dark:shadow-[0_0_10px_rgba(44,193,181,0.6)] group-hover:brightness-110"
+                                style={{ width: `${skill.level}%` }}
+                              />
+                            </div>
                           </div>
                         </div>
                       );
@@ -291,78 +273,6 @@ export const Skills: React.FC = () => {
         </div>
 
       </div>
-
-      {/* Lightweight Interactive Skill Info Modal */}
-      {activeSkillModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-          <div className="relative w-full max-w-md bg-white dark:bg-[#081716] border border-slate-200 dark:border-[#20938a]/40 rounded-3xl p-6 shadow-2xl space-y-4">
-            
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-[#20938a]/30 pb-3">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/40 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center">
-                  {React.createElement(ICON_MAP[activeSkillModal.iconName] || Code, { className: "w-5 h-5" })}
-                </div>
-                <div>
-                  <h3 className="text-base font-heading font-bold text-slate-900 dark:text-white">
-                    {activeSkillModal.name}
-                  </h3>
-                  <span className="text-xs font-mono text-[#0d9488] dark:text-[#2cc1b5] font-semibold">
-                    {activeSkillModal.categoryName}
-                  </span>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setActiveSkillModal(null)}
-                className="p-1.5 rounded-full bg-slate-100 dark:bg-[#0c2120] text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-[#20938a]/30 cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="space-y-3 text-xs text-slate-700 dark:text-gray-300">
-              <p className="leading-relaxed bg-slate-50 dark:bg-[#0c2120]/60 p-3 rounded-xl border border-slate-200 dark:border-[#20938a]/20">
-                {activeSkillModal.description}
-              </p>
-
-              <div className="grid grid-cols-2 gap-2 font-mono">
-                <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0c2120] border border-slate-200 dark:border-[#20938a]/20">
-                  <span className="text-slate-500 dark:text-gray-400 block text-[10px]">PROFICIENCY TIER</span>
-                  <span className="text-slate-900 dark:text-white font-bold text-xs">
-                    {getProficiencyBadge(activeSkillModal.level).label} ({activeSkillModal.level}%)
-                  </span>
-                </div>
-                <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0c2120] border border-slate-200 dark:border-[#20938a]/20">
-                  <span className="text-slate-500 dark:text-gray-400 block text-[10px]">EXPERIENCE</span>
-                  <span className="text-slate-900 dark:text-white font-bold text-xs">
-                    {activeSkillModal.yearsOfExperience}+ Years Production
-                  </span>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-wider block mb-1 font-semibold">Key Enterprise Usage</span>
-                <ul className="space-y-1 text-slate-700 dark:text-gray-300">
-                  <li className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0d9488] dark:text-[#2cc1b5]" />
-                    <span>Applied in live client microservices at Cubastion Consulting</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <button
-                onClick={() => setActiveSkillModal(null)}
-                className="w-full py-2.5 rounded-xl bg-[#0d9488] dark:bg-[#20938a] hover:bg-[#0f766e] dark:hover:bg-[#2cc1b5] text-white font-bold text-xs transition-colors cursor-pointer"
-              >
-                Close
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
 
     </section>
   );

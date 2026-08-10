@@ -37,7 +37,7 @@ export const PERSONAL_INFO = {
   name: 'Vedant Sharma',
   title: 'Full Stack Developer & Systems Architect',
   shortBio: 'Architecting high-performance enterprise web platforms, scalable microservices, secure authorization engines, and real-time event pipelines.',
-  fullBio: 'Full Stack Developer with expertise across Angular, React, Node.js, Express, Spring Boot, and cloud databases (PostgreSQL, MongoDB, Oracle DB). Proven track record designing enterprise workflow modules, RBAC security frameworks, and real-time notification pipelines for organizations including Iffco Tokio, Staff Selection Commission (SSC), and Metaco.',
+  fullBio: 'Full Stack Developer with expertise across Angular, React, Node.js, Express, Spring Boot, and cloud databases (MySQL, PostgreSQL, MongoDB, Oracle DB). Proven track record designing enterprise workflow modules, RBAC security frameworks, and real-time notification pipelines for esteemed organizations including Iffco Tokio General Insurance, Staff Selection Commission (SSC), and Metaco.',
   location: 'Gurugram, Haryana, India',
   email: 'vedantpandit7451006610@gmail.com',
   phone: '+91 7451006610',
@@ -49,7 +49,7 @@ export const PERSONAL_INFO = {
     { value: '70%', label: 'Operational Cost Reduction', count: 70, suffix: '%' }
   ],
   socials: {
-    github: 'https://github.com',
+    github: 'https://github.com/vedantsharma1560',
     linkedin: 'https://linkedin.com/in/vedantsharma15'
   }
 };
@@ -71,19 +71,20 @@ export const PROJECTS: Project[] = [
       unnati5,
       unnati6
     ],
-    tags: ['Angular', 'Spring Boot', 'Node.js', 'Oracle DB', 'Kong API Gateway', 'RBAC'],
-    demoUrl: 'https://linkedin.com/in/vedantsharma15',
+    tags: ['Angular', 'Spring Boot', 'Node.js', 'Oracle DB', 'Kong API Gateway', 'Redis', 'RBAC'],
+    demoUrl: 'https://unnati.iffcotokio.co.in',
     githubUrl: 'https://linkedin.com/in/vedantsharma15',
     featured: true,
     architecture: [
       'Spring Boot & Node.js microservices architecture routed through Kong API Gateway',
+      'Two factor OTP based login implementation',
       'Generic Validation Framework eliminating 3rd-party parsing overhead across 5+ services',
       'Front-end and back-end Role-Based Access Control (RBAC) yielding 90% data security fortification',
       'Optimized Oracle DB query indexing for instant multi-region policy lookups'
     ],
     challenges: [
       {
-        problem: 'Legacy peripheral systems were fragmented, causing high operational latency and frequent unauthorized field edits.',
+        problem: 'Legacy peripheral systems were fragmented, causing high operational latency and frequent garbage field edits.',
         solution: 'Built a unified Angular workflow with strict RBAC rules and back-end validation, cutting operational costs by 70%.'
       }
     ],
@@ -98,16 +99,16 @@ export const PROJECTS: Project[] = [
       { label: 'Security Fortification', value: '90%' },
       { label: 'Microservices', value: '5+' }
     ],
-    timeline: 'Cubastion Consulting',
+    timeline: 'Mar 2025 - Present',
     client: 'Iffco Tokio General Insurance'
   },
   {
     id: 'ssc-content-authoring',
-    title: 'Content Authoring Tool — SSC Vault & Assessment Platform',
-    subtitle: 'Secure inbound vault interface for encryption, authorization, and MinIO storage of 100k+ records.',
-    category: 'Security / Cloud Services',
-    description: 'Vault Inbound Interface securing authorization, encryption, decryption, and object storage for over 100,000 national assessment records.',
-    longDescription: 'Built for Staff Selection Commission (SSC), this platform manages confidential question banks and assessment assets with zero risk of data leakage. Uses Kafka for asynchronous microservice streaming and MinIO for encrypted object storage.',
+    title: 'Content Authoring Tool — Question Bank, Vault & Assessment Platform',
+    subtitle: 'Secure inbound vault interface for encryption, authorization, and MinIO storage of 1,00,000k+ records.',
+    category: 'Enterprise / Full Stack',
+    description: 'Multiple portals for authoring, vetting and auditing questions interface, securing authorization, encryption, decryption, and object storage for over 10,00,00,000 national assessment records.',
+    longDescription: 'Built for Staff Selection Commission (SSC), this platform manages confidential question banks and assessment assets with zero risk of data leakage. Uses Kafka for asynchronous microservice streaming, DSC token for hardware encryption and MinIO for encrypted object storage.',
     image: cat1,
     screenshots: [
       cat1,
@@ -118,43 +119,43 @@ export const PROJECTS: Project[] = [
       cat6,
       cat7
     ],
-    tags: ['Angular', 'Node.js', 'MinIO', 'Apache Kafka', 'MongoDB', 'PostgreSQL', 'Kong'],
-    demoUrl: 'https://linkedin.com/in/vedantsharma15',
+    tags: ['Angular', 'Node.js', 'MinIO', 'Apache Kafka', 'AES Encryption', 'MongoDB', 'PostgreSQL', 'Kong API Gateway', 'RBAC'],
+    demoUrl: 'https://caf.gyan-kosh.com',
     githubUrl: 'https://linkedin.com/in/vedantsharma15',
     featured: true,
     architecture: [
       'Vault Inbound Interface with hardware-grade AES encryption & decryption pipelines',
       'Apache Kafka consumer microservices for async event-driven record dispatching',
-      'MinIO Object Storage cluster storing encrypted images for 500+ assessment questions',
+      'MinIO Object Storage cluster storing encrypted images for 10,00,000+ assessment questions',
       'Hybrid PostgreSQL and MongoDB database persistence layers'
     ],
     challenges: [
       {
         problem: 'High vulnerability to data leaks and phishing during national exam question authoring.',
-        solution: 'Engineered end-to-end Vault encryption with MinIO object storage, reducing data leakage risk by 100%.'
+        solution: 'Engineered end-to-end Vault encryption with AES-256, DSC Token and MinIO object storage, reducing data leakage risk by 100%.'
       }
     ],
     features: [
       'Zero-trust content authoring canvas with real-time preview',
-      'MinIO encrypted image upload and rapid retrieval pipeline',
+      'MinIO encrypted image upload and rapid retrieval auditing pipeline',
       'Asynchronous Kafka event queues across microservices',
       'Strict audit trails and version control'
     ],
     metrics: [
-      { label: 'Records Secured', value: '100,000+' },
+      { label: 'Records Secured', value: '10,00,00,000+' },
       { label: 'Risk Reduction', value: '100%' },
-      { label: 'Questions Uploaded', value: '500+' }
+      { label: 'Questions Uploaded', value: '10,00,000+' }
     ],
-    timeline: 'Cubastion Consulting',
+    timeline: 'July 2024 - Feb 2025',
     client: 'Staff Selection Commission (SSC)'
   },
   {
     id: 'xnet-hrms',
-    title: 'xNet — Next-Gen HRMS & Asset Management Portal',
-    subtitle: 'Enterprise HR portal featuring Elasticsearch SEO, digital asset auditing, and MSAL authentication.',
-    category: 'Full Stack',
+    title: 'xNet — Next-Gen HRMS Portal',
+    subtitle: 'Enterprise HR portal featuring Elasticsearch SEO, Attendance & Leaves Management, Ticket & Task Tracker and MSAL authentication.',
+    category: 'In-house / Full Stack',
     description: 'Integrated Elasticsearch based on Apache Lucene for 75% faster search, along with digital asset lending and MSAL single sign-on.',
-    longDescription: 'xNet modernizes enterprise asset management and HR workflows. Replaced manual spreadsheets with an automated digital lending/auditing module (70% time saved) and MSAL login (99% drop in phishing activity).',
+    longDescription: 'xNet modernizes enterprise asset management and HR workflows. Replaced manual spreadsheets with an automated digital lending/auditing module (70% time saved) and MSAL login (99% drop in phishing activity). Automated Attendance & Leaves for employees, Automated Payroll and Salary Disbursement for finance team',
     image: xnet1,
     screenshots: [
       xnet1,
@@ -164,7 +165,7 @@ export const PROJECTS: Project[] = [
       xnet5
     ],
     tags: ['Angular', 'Node.js', 'Express.js', 'MySQL', 'Elasticsearch', 'Kafka', 'OAuth 2.0 / MSAL'],
-    demoUrl: 'https://linkedin.com/in/vedantsharma15',
+    demoUrl: 'https://xnet.cubastion.net/',
     githubUrl: 'https://linkedin.com/in/vedantsharma15',
     featured: true,
     architecture: [
@@ -182,24 +183,25 @@ export const PROJECTS: Project[] = [
     features: [
       'Elasticsearch full-text search with instant facets and filters',
       'Digital employee asset lending, tracking, and audit workflows',
-      'MSAL single sign-on with role-based dashboard views',
-      'Kafka event notifications for asset transfers'
+      'Auutomated Attendance & Leaves Tracking',
+      'Employee onboarding, AP/AR, Tickets & Tasks management, Salary generation & disbursement',
+      'MSAL single sign-on with role-based dashboard views'
     ],
     metrics: [
       { label: 'Search Latency Drop', value: '75%' },
       { label: 'Phishing Reduction', value: '99%' },
       { label: 'Resource Utilization', value: '-70%' }
     ],
-    timeline: 'Cubastion Consulting',
-    client: 'Cubastion Enterprise'
+    timeline: 'July 2023 - June 2024',
+    client: 'Cubastion Consulting'
   },
   {
     id: 'clst-metaco',
     title: 'CLST — Digital Asset Lending Platform',
-    subtitle: 'Institutional digital asset platform with JWT authorization, Kafka, and WebSocket notifications.',
-    category: 'Fintech / Real-time',
+    subtitle: 'Digital asset platform with JWT authorization, Kafka, and WebSocket notifications.',
+    category: 'Enterprise / Full Stack',
     description: 'Role-based access authorization using JWT & Google Client APIs, plus real-time Kafka & WebSocket messaging.',
-    longDescription: 'CLST provides secure institutional lending for digital assets. Simplifies access control via JWT & OAuth, achieves 90% data security fortification, and broadcasts instant real-time loan notifications via Kafka and WebSockets.',
+    longDescription: 'CLST provides secure institutional lending for digital assets. Simplifies access control via JWT & OAuth, achieves 90% data security fortification, and broadcasts instant real-time transactions notifications via Kafka and WebSockets.',
     image: clst1,
     screenshots: [
       clst1,
@@ -211,18 +213,18 @@ export const PROJECTS: Project[] = [
       clst7
     ],
     tags: ['Angular', 'Node.js', 'PostgreSQL', 'Kafka', 'WebSocket', 'Keycloak', 'JWT'],
-    demoUrl: 'https://linkedin.com/in/vedantsharma15',
+    demoUrl: 'https://clst.com',
     githubUrl: 'https://linkedin.com/in/vedantsharma15',
     featured: false,
     architecture: [
       'Kafka & WebSocket real-time messaging pipeline for sub-second trade notifications',
       'Keycloak & JWT authorization coupled with Google Client APIs',
       'PostgreSQL transactional database with strict foreign key constraints',
-      'Payment Gateway integration for automated multi-currency settlement'
+      'Copper APIs integration for automated multi-currency payments'
     ],
     challenges: [
       {
-        problem: 'Need for ultra-fast, secure real-time alerts on lending state changes.',
+        problem: 'Need for ultra-fast, secure real-time alerts on lending or borrowing state changes.',
         solution: 'Built a WebSocket broadcasting layer powered by Kafka pub/sub topics for seamless communication.'
       }
     ],
@@ -237,7 +239,7 @@ export const PROJECTS: Project[] = [
       { label: 'Notification Speed', value: '< 50ms' },
       { label: 'Uptime', value: '99.9%' }
     ],
-    timeline: 'Cubastion Consulting',
+    timeline: 'Mar 2023 - July 2023',
     client: 'Metaco'
   }
 ];
@@ -247,9 +249,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     name: 'Front-End',
     skills: [
       { name: 'Angular & Angular Material', level: 96, iconName: 'Code', description: 'Enterprise modules, reactive forms, RxJS, state management & RBAC guards.', yearsOfExperience: 3 },
-      { name: 'TypeScript & JavaScript (ES6+)', level: 95, iconName: 'FileCode', description: 'Strict type safety, OOP patterns, async/await & modular clean code.', yearsOfExperience: 3 },
+      { name: 'TypeScript & JavaScript', level: 95, iconName: 'FileCode', description: 'Strict type safety, OOP patterns, async/await & modular clean code.', yearsOfExperience: 3 },
       { name: 'React & Modern Frontend', level: 90, iconName: 'Layout', description: 'Hooks, context API, state management & responsive UI components.', yearsOfExperience: 3 },
-      { name: 'HTML5, CSS3, Tailwind & Bootstrap', level: 98, iconName: 'Palette', description: 'Responsive mobile-first layouts, dark mode, flexbox & grid design.', yearsOfExperience: 3 }
+      { name: 'Tailwind, Bootstrap & Material', level: 98, iconName: 'Palette', description: 'Responsive mobile-first layouts, dark mode, flexbox & grid design.', yearsOfExperience: 3 }
     ]
   },
   {
@@ -281,7 +283,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     name: 'Messaging & Other Tools',
     skills: [
       { name: 'Apache Kafka', level: 92, iconName: 'Network', description: 'Event-driven streaming topics, consumer groups & async messaging.', yearsOfExperience: 3 },
-      { name: 'Elasticsearch (Apache Lucene)', level: 88, iconName: 'Terminal', description: 'Full-text indexing, rapid search filtering & SEO optimization.', yearsOfExperience: 3 },
+      { name: 'Elasticsearch Stack', level: 88, iconName: 'Terminal', description: 'Full-text indexing, rapid search filtering & SEO optimization.', yearsOfExperience: 3 },
       { name: 'MinIO Object Storage', level: 90, iconName: 'Cloud', description: 'S3-compatible encrypted object storage for documents & images.', yearsOfExperience: 3 },
       { name: 'Kong API Gateway', level: 90, iconName: 'Shield', description: 'Centralized route proxies, security rate limits & OAuth authentication.', yearsOfExperience: 3 }
     ]
@@ -299,7 +301,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     description: 'Designing and engineering high-impact enterprise modules across Insurance, National Examination Vaults, HRMS, and Digital Asset Lending platforms.',
     highlights: [
       'Unnati Insurance Portal: Built end-to-end policy issuance workflow for Iffco Tokio agents PAN India, reducing operational costs by over 70%.',
-      'Content Authoring Tool (SSC): Built Vault Inbound Interface with MinIO, Kafka & encryption for 100,000+ records, reducing risk of data leakage by 100%.',
+      'Content Authoring Tool (SSC): Built Vault Inbound Interface with MinIO, Kafka, DSC Token & encryption for 1,00,00,000+ questions, reducing risk of data leakage by 100%.',
       'xNet (HRMS Portal): Integrated Elasticsearch for 75% faster search, developed digital Asset Management module (70% time reduction), and embedded MSAL auth (99% drop in phishing attempts).',
       'CLST (Metaco): Simplified RBAC authorization with JWT & Google Client APIs (90% data security fortification), and built real-time WebSocket/Kafka notification systems.'
     ],

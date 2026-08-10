@@ -157,7 +157,7 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume, onNavigate
             <div className="absolute w-60 h-60 bg-[#2cc1b5]/20 rounded-full blur-[90px] pointer-events-none -z-10 bottom-10 right-10" />
 
             {/* Seamless Character Image without any card/container frame */}
-            <div className="relative z-10 w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[460px] flex justify-center">
+            <div className="relative z-10 w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[460px] flex flex-col items-center justify-center animate-hero-float">
               <img
                 src={developerHeroAvatar}
                 alt="3D Developer Avatar"
@@ -167,6 +167,8 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume, onNavigate
                   mixBlendMode: 'normal',
                 }}
               />
+              {/* Soft ground shadow that anchors the floating effect */}
+              <div className="w-44 sm:w-56 h-4 bg-teal-900/20 dark:bg-[#20938a]/25 rounded-[100%] blur-md pointer-events-none -mt-3 scale-90 opacity-70" />
             </div>
           </div>
 
