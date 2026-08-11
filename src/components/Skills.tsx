@@ -196,14 +196,17 @@ export const Skills: React.FC = () => {
                       return (
                         <div
                           key={skill.name}
-                          className="group px-3.5 py-3 rounded-2xl border border-slate-200 dark:border-[#20938a]/30 bg-white dark:bg-[#0e171a]/95 flex flex-col justify-between gap-2.5 shadow-md shadow-slate-200/50 dark:shadow-md min-w-[150px] sm:min-w-[170px] flex-1 max-w-[220px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0d9488]/10 dark:hover:shadow-[#2cc1b5]/20 hover:border-[#0d9488]/60 dark:hover:border-[#2cc1b5]/60 hover:bg-slate-50/90 dark:hover:bg-[#112425]"
+                          className="group px-3.5 py-3 rounded-2xl border border-slate-200 dark:border-[#20938a]/30 bg-white dark:bg-[#0e171a]/95 flex flex-col justify-between gap-2.5 shadow-md shadow-slate-200/50 dark:shadow-md min-w-[150px] sm:min-w-[170px] flex-1 max-w-[240px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0d9488]/10 dark:hover:shadow-[#2cc1b5]/20 hover:border-[#0d9488]/60 dark:hover:border-[#2cc1b5]/60 hover:bg-slate-50/90 dark:hover:bg-[#112425]"
                         >
-                          <div className="flex items-center justify-between gap-2">
-                            <div className="flex items-center gap-2">
+                          <div className="flex items-center justify-between gap-1.5 min-w-0 w-full">
+                            <div className="flex items-center gap-2 min-w-0 flex-1">
                               <div className="w-7 h-7 rounded-lg bg-teal-50 dark:bg-[#081716] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                                 <IconComponent className="w-3.5 h-3.5" />
                               </div>
-                              <span className="text-slate-900 dark:text-white font-bold text-xs sm:text-sm font-heading truncate group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">
+                              <span
+                                className="text-slate-900 dark:text-white font-bold text-xs sm:text-sm font-heading truncate group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors"
+                                title={skill.name}
+                              >
                                 {skill.name}
                               </span>
                             </div>
