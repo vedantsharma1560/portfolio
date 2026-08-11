@@ -102,35 +102,35 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
           <div className="lg:col-span-5 flex flex-col gap-6 text-left">
             
             {/* Direct Contact Cards */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 space-y-6 shadow-xl shadow-slate-200/50 dark:shadow-xl">
+            <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 space-y-6 shadow-xl shadow-slate-200/50 dark:shadow-xl min-w-0 w-full overflow-hidden">
               <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-[#20938a]/20 pb-4">
                 Direct Contact Channels
               </h3>
 
-              <div className="space-y-4">
+              <div className="space-y-4 min-w-0 w-full">
                 <a
                   href={`mailto:${PERSONAL_INFO.email}`}
-                  className="flex items-center gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold">Email Address</span>
-                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">{PERSONAL_INFO.email}</span>
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold truncate">Email Address</span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors truncate block w-full" title={PERSONAL_INFO.email}>{PERSONAL_INFO.email}</span>
                   </div>
                 </a>
 
                 <a
                   href={`tel:${PERSONAL_INFO.phone}`}
-                  className="flex items-center gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold">Direct Phone</span>
-                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">{PERSONAL_INFO.phone}</span>
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold truncate">Direct Phone</span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors truncate block w-full" title={PERSONAL_INFO.phone}>{PERSONAL_INFO.phone}</span>
                   </div>
                 </a>
 
@@ -138,14 +138,14 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
                   href={PERSONAL_INFO.socials.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Github className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold">GitHub Profile</span>
-                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">{PERSONAL_INFO.socials.github}</span>
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold truncate">GitHub Profile</span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors truncate block w-full" title={PERSONAL_INFO.socials.github}>{PERSONAL_INFO.socials.github}</span>
                   </div>
                 </a>
 
@@ -153,24 +153,24 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
                   href={PERSONAL_INFO.socials.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Linkedin className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold">LinkedIn Profile</span>
-                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">{PERSONAL_INFO.socials.linkedin}</span>
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold truncate">LinkedIn Profile</span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors truncate block w-full" title={PERSONAL_INFO.socials.linkedin}>{PERSONAL_INFO.socials.linkedin}</span>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716]">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center">
+                <div className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] min-w-0 w-full overflow-hidden">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold">Location</span>
-                    <span className="text-sm font-medium text-slate-900 dark:text-white">{PERSONAL_INFO.location}</span>
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[10px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest block font-semibold truncate">Location</span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-white truncate block w-full" title={PERSONAL_INFO.location}>{PERSONAL_INFO.location}</span>
                   </div>
                 </div>
               </div>
