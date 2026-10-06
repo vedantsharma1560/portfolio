@@ -10,9 +10,18 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ enabled }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // Check if touch device on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isCoarse = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+      setIsTouchDevice(isCoarse);
+    }
+  }, []);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled || isTouchDevice) return;
 
     const onMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -42,9 +51,9 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ enabled }) => {
     const onMouseLeave = () => setIsVisible(false);
     const onMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mouseup', onMouseUp);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mousedown', onMouseDown, { passive: true });
+    window.addEventListener('mouseup', onMouseUp, { passive: true });
     document.addEventListener('mouseleave', onMouseLeave);
     document.addEventListener('mouseenter', onMouseEnter);
 
@@ -55,24 +64,29 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({ enabled }) => {
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseenter', onMouseEnter);
     };
-  }, [enabled, isVisible]);
+  }, [enabled, isVisible, isTouchDevice]);
 
-  // Smooth ring lag effect
+  // Smooth ring lag effect - only run when visible and on fine pointer
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled || !isVisible || isTouchDevice) return;
     let request: number;
     const follow = () => {
-      setRingPosition((prev) => ({
-        x: prev.x + (position.x - prev.x) * 0.2,
-        y: prev.y + (position.y - prev.y) * 0.2,
-      }));
+      setRingPosition((prev) => {
+        const dx = position.x - prev.x;
+        const dy = position.y - prev.y;
+        if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) return prev;
+        return {
+          x: prev.x + dx * 0.25,
+          y: prev.y + dy * 0.25,
+        };
+      });
       request = requestAnimationFrame(follow);
     };
     request = requestAnimationFrame(follow);
     return () => cancelAnimationFrame(request);
-  }, [position, enabled]);
+  }, [position, enabled, isVisible, isTouchDevice]);
 
-  if (!enabled || !isVisible) return null;
+  if (!enabled || !isVisible || isTouchDevice) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block">

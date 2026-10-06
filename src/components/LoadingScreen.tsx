@@ -17,13 +17,13 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           clearInterval(timer);
           setTimeout(() => {
             setIsFadingOut(true);
-            setTimeout(onComplete, 500); // fade out duration
-          }, 200);
+            setTimeout(onComplete, 250); // fast fade out
+          }, 80);
           return 100;
         }
-        return prev + Math.floor(Math.random() * 15) + 5;
+        return prev + Math.floor(Math.random() * 30) + 20;
       });
-    }, 80);
+    }, 30);
 
     return () => clearInterval(timer);
   }, [onComplete]);

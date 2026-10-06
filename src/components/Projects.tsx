@@ -41,6 +41,8 @@ export const Projects: React.FC = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="max-h-full max-w-full w-auto object-contain group-hover:scale-105 transition-transform duration-700 opacity-95 group-hover:opacity-100 rounded-lg"
                   />
 

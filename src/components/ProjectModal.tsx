@@ -54,6 +54,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             <img
               src={project.screenshots[activeImageIdx] || project.image}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               className="max-h-[320px] sm:max-h-[450px] max-w-full w-auto object-contain transition-all duration-500 rounded-lg"
             />
 

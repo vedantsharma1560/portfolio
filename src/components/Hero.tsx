@@ -161,6 +161,8 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume, onNavigate
               <img
                 src={developerHeroAvatar}
                 alt="3D Developer Avatar"
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-auto object-contain max-h-[500px] sm:max-h-[560px] mx-auto filter drop-shadow-[0_25px_45px_rgba(44,193,181,0.22)] transition-opacity duration-300 ease-out"
                 style={{
                   background: 'transparent',
