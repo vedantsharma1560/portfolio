@@ -32,7 +32,7 @@ export const Projects: React.FC = () => {
           {displayProjects.map((project) => (
             <div
               key={project.id}
-              className="group relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 hover:border-[#0d9488]/60 dark:hover:border-[#2cc1b5]/60 transition-all duration-500 flex flex-col justify-between hover:-translate-y-2 shadow-xl shadow-slate-200/50 dark:shadow-xl"
+              className="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#0e171a]/95 transition-all duration-500 flex flex-col justify-between hover:-translate-y-2 shadow-xl shadow-slate-200/50 dark:shadow-xl"
             >
               
               <div>

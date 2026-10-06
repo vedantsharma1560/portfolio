@@ -55,7 +55,7 @@ export const About: React.FC = () => {
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[#20938a] via-[#2cc1b5] to-[#14645e] opacity-75 blur-md group-hover:opacity-100 transition duration-500" />
 
               {/* Glass Frame Container */}
-              <div className="relative rounded-3xl p-4 overflow-hidden border border-slate-200 dark:border-[#20938a]/30 bg-white dark:bg-[#0c2120]/90 shadow-2xl">
+              <div className="relative rounded-3xl p-4 overflow-hidden bg-white dark:bg-[#0c2120]/90 shadow-2xl">
                 <img
                   src={me}
                   alt="Vedant Sharma"
@@ -63,7 +63,7 @@ export const About: React.FC = () => {
                 />
 
                 {/* Overlay Floating HUD Badges */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl backdrop-blur-md border border-slate-200 dark:border-[#20938a]/40 bg-white/90 dark:bg-[#050e0d]/80 shadow-lg">
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl backdrop-blur-md bg-white/90 dark:bg-[#050e0d]/80 shadow-lg">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-slate-900 dark:text-white font-bold text-sm font-heading">{PERSONAL_INFO.name}</p>
@@ -81,7 +81,7 @@ export const About: React.FC = () => {
 
           {/* Story & Philosophy (Right) */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-            <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 flex flex-col gap-4 shadow-xl shadow-slate-200/50 dark:shadow-xl hover:border-[#0d9488]/50 dark:hover:border-[#2cc1b5]/50 transition-all">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0e171a]/95 flex flex-col gap-4 shadow-xl shadow-slate-200/50 dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all">
               <h3 className="text-xl sm:text-2xl font-heading font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <Award className="w-5 h-5 text-[#0d9488] dark:text-[#2cc1b5]" />
                 Background & Expertise
@@ -101,9 +101,9 @@ export const About: React.FC = () => {
                 return (
                   <div
                     key={idx}
-                    className="p-5 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-[#0e171a]/90 hover:border-[#0d9488]/60 dark:hover:border-[#2cc1b5]/60 hover:bg-slate-50 dark:hover:bg-[#121f23] transition-all duration-300 group shadow-md shadow-slate-200/50 dark:shadow-md"
+                    className="p-5 rounded-xl bg-white dark:bg-[#0e171a]/90 hover:bg-slate-50 dark:hover:bg-[#121f23] transition-all duration-300 group shadow-md shadow-slate-200/50 dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-lg hover:-translate-y-0.5"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#091114] border border-teal-200 dark:border-slate-700/60 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#091114] text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                       <IconComponent className="w-5 h-5" />
                     </div>
                     <h4 className="text-slate-900 dark:text-white font-bold text-base font-heading group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">

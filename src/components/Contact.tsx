@@ -102,7 +102,7 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
           <div className="lg:col-span-5 flex flex-col gap-6 text-left">
             
             {/* Direct Contact Cards */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 space-y-6 shadow-xl shadow-slate-200/50 dark:shadow-xl min-w-0 w-full overflow-hidden">
+            <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0e171a]/95 space-y-6 shadow-xl shadow-slate-200/50 dark:shadow-xl min-w-0 w-full overflow-hidden">
               <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-[#20938a]/20 pb-4">
                 Direct Contact Channels
               </h3>
@@ -110,9 +110,9 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
               <div className="space-y-4 min-w-0 w-full">
                 <a
                   href={`mailto:${PERSONAL_INFO.email}`}
-                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-[#081716] shadow-sm hover:shadow-md transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -123,9 +123,9 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
 
                 <a
                   href={`tel:${PERSONAL_INFO.phone}`}
-                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-[#081716] shadow-sm hover:shadow-md transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -138,9 +138,9 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
                   href={PERSONAL_INFO.socials.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-[#081716] shadow-sm hover:shadow-md transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Github className="w-5 h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -153,9 +153,9 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
                   href={PERSONAL_INFO.socials.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] hover:border-[#0d9488]/50 dark:hover:border-[#20938a]/50 transition-all group min-w-0 w-full overflow-hidden"
+                  className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-[#081716] shadow-sm hover:shadow-md transition-all group min-w-0 w-full overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Linkedin className="w-5 h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -164,8 +164,8 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
                   </div>
                 </a>
 
-                <div className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl border border-slate-200 dark:border-[#20938a]/20 bg-slate-50 dark:bg-[#081716] min-w-0 w-full overflow-hidden">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/30 text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0">
+                <div className="flex items-center gap-3.5 sm:gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-[#081716] shadow-sm min-w-0 w-full overflow-hidden">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-[#0c2120] text-[#0d9488] dark:text-[#2cc1b5] flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -180,7 +180,7 @@ export const Contact: React.FC<ContactProps> = ({ attachedEstimate = '' }) => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-[#0e171a]/95 shadow-2xl shadow-slate-200/50 dark:shadow-2xl">
+            <div className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-[#0e171a]/95 shadow-2xl shadow-slate-200/50 dark:shadow-2xl">
               
               {isSubmitted ? (
                 <div className="py-12 flex flex-col items-center text-center space-y-4 animate-fade-in">

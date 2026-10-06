@@ -14,7 +14,7 @@ interface NavbarProps {
 const NAV_LINKS = [
   { id: 'hero', label: 'Home', icon: Home },
   { id: 'about', label: 'About', icon: User },
-  { id: 'skills', label: 'Skills', icon: Code },
+  { id: 'skills', label: 'Stack', icon: Code },
   { id: 'experience', label: 'Experience', icon: Briefcase },
   { id: 'projects', label: 'Projects', icon: FolderGit2 },
   { id: 'contact', label: 'Contact', icon: Mail },

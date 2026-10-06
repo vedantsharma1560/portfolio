@@ -41,10 +41,10 @@ export const Experience: React.FC = () => {
 
                 {/* Experience Card */}
                 <div
-                  className={`p-6 sm:p-8 rounded-2xl border transition-all duration-300 bg-white dark:bg-[#0e171a]/95 ${
+                  className={`p-6 sm:p-8 rounded-2xl transition-all duration-300 bg-white dark:bg-[#0e171a]/95 ${
                     isExpanded
-                      ? 'border-[#0d9488] dark:border-[#2cc1b5] shadow-xl shadow-teal-500/10 dark:shadow-2xl dark:shadow-[#20938a]/20'
-                      : 'border-slate-200 dark:border-slate-700/60 hover:border-[#0d9488]/60 dark:hover:border-[#2cc1b5]/60 hover:bg-slate-50 dark:hover:bg-[#121f23]'
+                      ? 'shadow-xl shadow-teal-500/10 dark:shadow-2xl dark:shadow-[#20938a]/20'
+                      : 'shadow-md shadow-slate-200/50 dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-xl hover:bg-slate-50 dark:hover:bg-[#121f23]'
                   }`}
                 >
                   
@@ -56,7 +56,7 @@ export const Experience: React.FC = () => {
                     <div className="flex items-center gap-4">
                       {/* Logo Icon */}
                       <div className={`w-12 h-12 rounded-2xl bg-[#0d9488] dark:bg-[#20938a] p-[1px] shadow-lg flex-shrink-0`}>
-                        <div className="w-full h-full bg-teal-50 dark:bg-[#081716] rounded-[15px] flex items-center justify-center text-[#0d9488] dark:text-[#2cc1b5] font-extrabold text-sm font-mono border border-teal-200 dark:border-[#20938a]/40">
+                        <div className="w-full h-full bg-teal-50 dark:bg-[#081716] rounded-[15px] flex items-center justify-center text-[#0d9488] dark:text-[#2cc1b5] font-extrabold text-sm font-mono">
                           {exp.logoText}
                         </div>
                       </div>
@@ -66,7 +66,7 @@ export const Experience: React.FC = () => {
                           <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white group-hover:text-[#0d9488] dark:group-hover:text-[#2cc1b5] transition-colors">
                             {exp.role}
                           </h3>
-                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-teal-50 dark:bg-[#081716] text-[#0d9488] dark:text-[#2cc1b5] border border-teal-200 dark:border-[#20938a]/40 font-semibold">
+                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-teal-50 dark:bg-[#081716] text-[#0d9488] dark:text-[#2cc1b5] font-semibold">
                             {exp.type}
                           </span>
                         </div>
@@ -90,7 +90,7 @@ export const Experience: React.FC = () => {
                       </div>
 
                       <button
-                        className="p-2 rounded-xl bg-slate-100 dark:bg-[#081716] text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-[#20938a]/30 transition-colors"
+                        className="p-2 rounded-xl bg-slate-100 dark:bg-[#081716] text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                         aria-label="Toggle Details"
                       >
                         {isExpanded ? <ChevronUp className="w-5 h-5 text-[#0d9488] dark:text-[#2cc1b5]" /> : <ChevronDown className="w-5 h-5" />}
