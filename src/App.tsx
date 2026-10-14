@@ -16,6 +16,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { TerminalOverlay } from './components/TerminalOverlay';
 import { ResumeModal } from './components/ResumeModal';
+import { AskVedantAI } from './components/AskVedantAI';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -119,6 +120,9 @@ export default function App() {
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
       />
+
+      {/* Ask Vedant AI Floating Assistant */}
+      <AskVedantAI />
 
     </div>
   );
