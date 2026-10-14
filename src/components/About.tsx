@@ -1,7 +1,7 @@
 import React from 'react';
 import { User, ShieldCheck, Zap, Code, Award, Compass, Sparkles } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import me from '../assets/images/me.png';
+import me from '../assets/images/my-professional-headshot.png';
 
 export const About: React.FC = () => {
   const CORE_VALUES = [
@@ -59,7 +59,7 @@ export const About: React.FC = () => {
                 <img
                   src={me}
                   alt="Vedant Sharma"
-                  className="w-full h-auto max-h-[520px] sm:max-h-[580px] object-contain mx-auto rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500 [backface-visibility:hidden] [transform:translateZ(0)]"
+                  className="w-full h-auto max-h-[520px] sm:max-h-[580px] object-contain mx-auto rounded-2xl transition-all duration-500 [backface-visibility:hidden] [transform:translateZ(0)]"
                 />
 
                 {/* Overlay Floating HUD Badges */}

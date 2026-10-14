@@ -113,7 +113,7 @@ export const AskVedantAI: React.FC = () => {
       const fallbackMsg: ChatMessage = {
         id: `model-${Date.now()}`,
         role: 'model',
-        text: "Vedant Sharma is a Full Stack Developer & Systems Architect with 3.5+ years of experience across Angular, React, Node.js, Spring Boot, Kafka, and enterprise databases. Feel free to contact him directly at **vedantpandit7451006610@gmail.com** or +91 7451006610!",
+        text: "I encountered a temporary connection glitch reaching the AI service. Please click retry or reach out to Vedant directly at **[vedantpandit7451006610@gmail.com](mailto:vedantpandit7451006610@gmail.com)** or **[+91 7451006610](tel:+917451006610)**!",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages((prev) => [...prev, fallbackMsg]);
@@ -133,18 +133,16 @@ export const AskVedantAI: React.FC = () => {
     }
   };
 
-  // Simple formatting helper for markdown-like formatting (bolding, lists, linebreaks)
+  // Enhanced formatting helper for markdown (bold, links, headers, lists, linebreaks)
   const renderFormattedText = (rawText: string) => {
     const lines = rawText.split('\n');
-    return lines.map((line, idx) => {
-      // Check for bullet line
-      const isBullet = line.trim().startsWith('* ') || line.trim().startsWith('- ');
-      const cleanLine = isBullet ? line.trim().replace(/^[\*\-]\s+/, '') : line;
 
-      // Replace **bold** with <strong>
-      const parts = cleanLine.split(/(\*\*[^*]+\*\*)/g);
+    const parseInline = (text: string) => {
+      // First match links [text](url) and bold **bold**
+      const tokenRegex = /(\[[^\]]+\]\([^\)]+\)|\*\*[^*]+\*\*)/g;
+      const parts = text.split(tokenRegex);
 
-      const parsedContent = parts.map((part, pIdx) => {
+      return parts.map((part, pIdx) => {
         if (part.startsWith('**') && part.endsWith('**')) {
           return (
             <strong key={pIdx} className="font-semibold text-teal-600 dark:text-[#5eead4]">
@@ -152,24 +150,56 @@ export const AskVedantAI: React.FC = () => {
             </strong>
           );
         }
+        const linkMatch = part.match(/^\[([^\]]+)\]\(([^\)]+)\)$/);
+        if (linkMatch) {
+          const [, label, href] = linkMatch;
+          return (
+            <a
+              key={pIdx}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-600 dark:text-[#5eead4] underline decoration-teal-400/50 hover:decoration-teal-400 font-medium break-all"
+            >
+              {label}
+            </a>
+          );
+        }
         return part;
       });
+    };
 
-      if (isBullet) {
+    return lines.map((line, idx) => {
+      const trimmed = line.trim();
+
+      // Check for headers (e.g., ### Header)
+      if (trimmed.startsWith('### ') || trimmed.startsWith('## ')) {
+        const headerText = trimmed.replace(/^#+\s+/, '');
         return (
-          <li key={idx} className="ml-4 list-disc mb-1 leading-relaxed">
-            {parsedContent}
+          <h4 key={idx} className="font-bold text-slate-900 dark:text-white mt-2 mb-1 text-xs sm:text-sm">
+            {parseInline(headerText)}
+          </h4>
+        );
+      }
+
+      // Check for bullet line (* or -)
+      const isBullet = trimmed.startsWith('* ') || trimmed.startsWith('- ') || trimmed.startsWith('• ');
+      if (isBullet) {
+        const cleanLine = trimmed.replace(/^(\*|\-|•)\s+/, '');
+        return (
+          <li key={idx} className="ml-4 list-disc mb-1 leading-relaxed text-slate-700 dark:text-slate-300">
+            {parseInline(cleanLine)}
           </li>
         );
       }
 
-      if (line.trim() === '') {
-        return <div key={idx} className="h-2" />;
+      if (trimmed === '') {
+        return <div key={idx} className="h-1.5" />;
       }
 
       return (
-        <p key={idx} className="mb-1 leading-relaxed">
-          {parsedContent}
+        <p key={idx} className="mb-1 leading-relaxed text-slate-700 dark:text-slate-300">
+          {parseInline(line)}
         </p>
       );
     });
