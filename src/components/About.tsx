@@ -71,7 +71,7 @@ export const About: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-50 dark:bg-[#0c2120] border border-teal-200 dark:border-[#20938a]/40 text-[#0d9488] dark:text-[#2cc1b5] font-mono text-[11px] font-semibold">
                       <Sparkles className="w-3 h-3 text-[#0d9488] dark:text-[#2cc1b5]" />
-                      3+ Yrs Exp
+                      3.8+ Yrs Exp
                     </div>
                   </div>
                 </div>

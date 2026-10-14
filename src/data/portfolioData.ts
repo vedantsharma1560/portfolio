@@ -43,7 +43,7 @@ export const PERSONAL_INFO = {
   phone: '+91 7451006610',
   availability: 'Open for Full Stack & Senior Engineering Roles',
   stats: [
-    { value: '3.5+', label: 'Years Experience', count: 3.5, suffix: '+' },
+    { value: '3.8+', label: 'Years Experience', count: 3.8, suffix: '+' },
     { value: '25+', label: 'Enterprise Modules Shipped', count: 15, suffix: '+' },
     { value: '4+', label: 'Access & Security Layer Implemented', count: 4, suffix: '+' },
     { value: '70%', label: 'Operational Cost Reduction', count: 70, suffix: '%' }
