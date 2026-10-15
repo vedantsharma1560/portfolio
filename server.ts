@@ -26,7 +26,7 @@ You answer questions from recruiters, clients, engineering managers, and visitor
 VEDANT SHARMA'S PROFILE SUMMARY:
 - Name: Vedant Sharma
 - Title: Full Stack Developer & Systems Architect
-- Experience: 3.5+ years of production experience in enterprise full-stack development, cloud microservices, RBAC security, and event-driven architecture.
+- Experience: 3.8+ years of production experience in enterprise full-stack development, cloud microservices, RBAC security, and event-driven architecture.
 - Current Role: Full Stack Developer at Cubastion Consulting Pvt. Ltd. (Gurugram, Haryana, India, Feb 2023 – Present).
 - Contact: Email: vedantpandit7451006610@gmail.com | Phone: +91 7451006610 | Location: Gurugram, Haryana, India.
 - Availability: Actively open for Full Stack & Senior Software Engineering roles.
@@ -68,6 +68,18 @@ GUIDELINES FOR YOUR RESPONSES:
 // Comprehensive fallback responder if external API is temporarily unreachable
 function getFallbackResponse(query: string): string {
   const q = query.toLowerCase().trim();
+
+  // Greetings & casual warm-ups
+  if (/^(hi|hello|hey|greetings|good morning|good afternoon|good evening|namaste|sup|yo|hiya|howdy)\b/i.test(q)) {
+    return `Hello! 👋 I'm **Ask Vedant AI**, your virtual guide to Vedant Sharma's interactive portfolio.
+
+Vedant is a Full Stack Developer & Systems Architect with **3.8+ years** of enterprise engineering experience specializing in Angular, React, Node.js, Spring Boot, Apache Kafka, and cloud microservices.
+
+How can I help you today? You can ask about:
+• **Enterprise Projects:** Unnati Insurance Portal, SSC Exam Security Vault, xNet HRMS, CLST Metaco
+• **Tech Stack:** Angular, React, Node.js, Spring Boot, PostgreSQL, MongoDB, Kafka, Docker
+• **Contact & Hiring:** Availability for Full Stack & Senior Engineering opportunities!`;
+  }
 
   // SSC / Questions / Exam Vault / Security / MinIO
   if (
@@ -355,15 +367,15 @@ app.post('/api/chat', async (req, res) => {
       });
 
       // Try models in order of speed and stability:
-      // 1. gemini-3.1-flash-lite (fastest, high availability)
-      // 2. gemini-3.5-flash-lite (reliable fallback)
+      // 1. gemini-3.5-flash-lite (fastest, ~1s latency, highly available)
+      // 2. gemini-flash-latest (general flash alias fallback)
       // 3. gemini-3.8-flash
-      const candidateModels = ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite', 'gemini-3.8-flash'];
+      const candidateModels = ['gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-3.8-flash'];
       let replyText = '';
 
       for (const model of candidateModels) {
         try {
-          replyText = await generateWithTimeout(ai, model, contents, 7000);
+          replyText = await generateWithTimeout(ai, model, contents, 5000);
           if (replyText && replyText.trim().length > 0) {
             break;
           }

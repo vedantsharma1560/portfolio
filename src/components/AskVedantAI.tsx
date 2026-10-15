@@ -15,6 +15,7 @@ import {
   Mail,
   HelpCircle
 } from 'lucide-react';
+import { getClientPortfolioAnswer } from '../utils/aiFallback';
 
 interface ChatMessage {
   id: string;
@@ -87,33 +88,42 @@ export const AskVedantAI: React.FC = () => {
         text: m.text
       }));
 
+      // Abort after 6 seconds to prevent UI hangs
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 6000);
+
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           message: query,
           history: historyPayload
         })
       });
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);
       }
 
       const data = await response.json();
+      const reply = data.reply || getClientPortfolioAnswer(query);
       const modelMessage: ChatMessage = {
         id: `model-${Date.now()}`,
         role: 'model',
-        text: data.reply || "I'm sorry, I couldn't process that response. Please try again or reach out to Vedant directly!",
+        text: reply,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages((prev) => [...prev, modelMessage]);
     } catch (err) {
-      console.error('Ask Vedant AI error:', err);
+      console.warn('Ask Vedant AI network/server exception; serving grounded answer:', err);
+      // Immediately provide an accurate, high-fidelity portfolio answer without leaving the user stranded
+      const clientAnswer = getClientPortfolioAnswer(query);
       const fallbackMsg: ChatMessage = {
         id: `model-${Date.now()}`,
         role: 'model',
-        text: "I encountered a temporary connection glitch reaching the AI service. Please click retry or reach out to Vedant directly at **[vedantpandit7451006610@gmail.com](mailto:vedantpandit7451006610@gmail.com)** or **[+91 7451006610](tel:+917451006610)**!",
+        text: clientAnswer,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages((prev) => [...prev, fallbackMsg]);
