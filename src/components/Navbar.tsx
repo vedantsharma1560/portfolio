@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, MousePointer, Terminal, Home, User, Code, Briefcase, FolderGit2, Mail, ArrowRight } from 'lucide-react';
+import { Menu, X, Sun, Moon, Terminal, Home, User, Code, Briefcase, FolderGit2, ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
   activeSection: string;
   isDarkMode: boolean;
   onToggleTheme: () => void;
-  isCursorEnabled: boolean;
-  onToggleCursor: () => void;
   onOpenTerminal: () => void;
 }
 
@@ -17,15 +15,12 @@ const NAV_LINKS = [
   { id: 'skills', label: 'Stack', icon: Code },
   { id: 'experience', label: 'Experience', icon: Briefcase },
   { id: 'projects', label: 'Projects', icon: FolderGit2 },
-  { id: 'contact', label: 'Contact', icon: Mail },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeSection,
   isDarkMode,
   onToggleTheme,
-  isCursorEnabled,
-  onToggleCursor,
   onOpenTerminal,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -151,16 +146,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
-              onClick={() => onToggleCursor()}
-              title={isCursorEnabled ? 'Disable Custom Cursor' : 'Enable Custom Cursor'}
-              className={`p-2 rounded-xl transition-all hidden md:block border border-slate-200 dark:border-[#20938a]/30 cursor-pointer ${
-                isCursorEnabled ? 'text-[#0d9488] dark:text-[#2cc1b5] bg-teal-50 dark:bg-[#20938a]/20 border-teal-300 dark:border-[#20938a]/50' : 'text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-[#0c2120]/80'
-              }`}
-            >
-              <MousePointer className="w-4 h-4" />
-            </button>
-
-            <button
               onClick={() => onToggleTheme()}
               title={isDarkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
               className="p-2 rounded-xl text-slate-700 dark:text-gray-300 hover:text-[#0d9488] dark:hover:text-[#2cc1b5] transition-all bg-slate-100 dark:bg-[#0c2120]/80 border border-slate-200 dark:border-[#20938a]/30 cursor-pointer"
@@ -263,32 +248,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Bottom Actions inside Mobile Drawer */}
             <div className="flex flex-col gap-3 pt-5 border-t border-slate-200/80 dark:border-[#20938a]/20">
-              <div className="grid grid-cols-2 gap-2.5">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenTerminal();
-                  }}
-                  className="p-3.5 rounded-xl bg-slate-100 dark:bg-[#0c2120] text-xs font-mono font-semibold text-[#0d9488] dark:text-[#2cc1b5] border border-slate-200 dark:border-[#20938a]/30 flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-[#112d2b] cursor-pointer"
-                >
-                  <Terminal className="w-4 h-4" />
-                  Terminal CLI
-                </button>
-
-                <button
-                  onClick={() => {
-                    onToggleCursor();
-                  }}
-                  className={`p-3.5 rounded-xl text-xs font-mono font-semibold border flex items-center justify-center gap-2 cursor-pointer ${
-                    isCursorEnabled
-                      ? 'text-[#0d9488] dark:text-[#2cc1b5] bg-teal-50 dark:bg-[#20938a]/20 border-teal-300 dark:border-[#20938a]/50'
-                      : 'text-slate-600 dark:text-gray-300 bg-slate-100 dark:bg-[#0c2120] border-slate-200 dark:border-[#20938a]/30'
-                  }`}
-                >
-                  <MousePointer className="w-4 h-4" />
-                  Custom Cursor
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenTerminal();
+                }}
+                className="w-full p-3.5 rounded-xl bg-slate-100 dark:bg-[#0c2120] text-xs font-mono font-semibold text-[#0d9488] dark:text-[#2cc1b5] border border-slate-200 dark:border-[#20938a]/30 flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-[#112d2b] cursor-pointer"
+              >
+                <Terminal className="w-4 h-4" />
+                Terminal CLI
+              </button>
 
               <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-teal-50/60 dark:bg-[#081716]/80 border border-teal-100 dark:border-[#20938a]/20 text-xs font-mono text-[#0d9488] dark:text-[#2cc1b5]">
                 <span className="flex items-center gap-2 font-medium">

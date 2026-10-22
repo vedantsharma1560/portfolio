@@ -6,7 +6,6 @@ import { downloadResumeDirectly } from '../utils/downloadResume';
 interface TerminalOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  onNavigateToContact: () => void;
   onOpenResume: () => void;
   onToggleTheme: () => void;
 }
@@ -20,7 +19,6 @@ interface CommandLog {
 export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({
   isOpen,
   onClose,
-  onNavigateToContact,
   onOpenResume,
   onToggleTheme,
 }) => {
@@ -73,10 +71,9 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({
             <p>• <span className="text-amber-300 font-bold">about</span> - Print bio, location and core background</p>
             <p>• <span className="text-amber-300 font-bold">skills</span> - Display technical stack matrix</p>
             <p>• <span className="text-amber-300 font-bold">projects</span> - List top featured projects</p>
-            <p>• <span className="text-amber-300 font-bold">contact</span> - Scroll down to contact card</p>
+            <p>• <span className="text-amber-300 font-bold">contact</span> - Display email, phone, and profiles</p>
             <p>• <span className="text-amber-300 font-bold">resume</span> - Open interactive resume modal</p>
             <p>• <span className="text-amber-300 font-bold">theme</span> - Toggle light/dark visual theme</p>
-            <p>• <span className="text-amber-300 font-bold">sudo hire</span> - Direct shortcut to hire proposal</p>
             <p>• <span className="text-amber-300 font-bold">clear</span> - Wipe terminal output buffer</p>
             <p>• <span className="text-amber-300 font-bold">exit</span> - Close terminal window</p>
           </div>
@@ -102,14 +99,12 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({
         type: 'output',
         text: `Featured Projects:\n${projList}`
       });
-    } else if (cmd === 'contact' || cmd === 'sudo hire') {
+    } else if (cmd === 'contact' || cmd === 'hire' || cmd === 'sudo hire') {
       newLogs.push({
         id: (Date.now() + 1).toString(),
         type: 'output',
-        text: 'Navigating to contact section...'
+        text: `Vedant Sharma's Direct Contact Information:\n• Email: ${PERSONAL_INFO.email}\n• Phone: ${PERSONAL_INFO.phone}\n• Location: ${PERSONAL_INFO.location}\n• LinkedIn: ${PERSONAL_INFO.socials.linkedin}\n• GitHub: ${PERSONAL_INFO.socials.github}`
       });
-      onNavigateToContact();
-      onClose();
     } else if (cmd === 'resume' || cmd === 'cv' || cmd === 'cat resume.txt') {
       downloadResumeDirectly();
       newLogs.push({

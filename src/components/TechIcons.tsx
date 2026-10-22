@@ -64,6 +64,31 @@ export const TechIcon: React.FC<TechIconProps> = ({ name, className = 'w-9 h-9' 
     );
   }
 
+  // Java
+  if (normalized === 'java') {
+    return (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+        <path d="M48 20c-8 12-1 16-1 16s12-7 1-16z" fill="#ea2d2e"/>
+        <path d="M42 34c-12 18-2 24-2 24s18-10 2-24z" fill="#0074bd"/>
+        <path d="M25 70c0 0 15 5 35 0s18-7 18-7-4 4-15 7-38 0-38 0z" fill="#ea2d2e"/>
+        <path d="M20 78c0 0 18 6 44 0s24-8 24-8-5 5-18 8-50 0-50 0z" fill="#0074bd"/>
+        <path d="M30 86c0 0 14 4 33 0s16-5 16-5-4 3-14 5-35 0-35 0z" fill="#ea2d2e"/>
+      </svg>
+    );
+  }
+
+  // WebSockets
+  if (normalized.includes('websocket') || normalized.includes('socket')) {
+    return (
+      <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="5" fill="#1e293b" />
+        <path d="M12 4L4 8.5L12 13L20 8.5L12 4Z" stroke="#22d3ee" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4 12.5L12 17L20 12.5" stroke="#38bdf8" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4 16.5L12 21L20 16.5" stroke="#0ea5e9" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
   // REST APIs (Modern API Gateway with HTTP endpoints & brackets)
   // REST APIs (Modern API Gateway with HTTP endpoints & brackets)
   if (normalized.includes('rest') || normalized.includes('api') || normalized.includes('microservice')) {

@@ -3,11 +3,11 @@ import { ArrowRight, Download, Github, Linkedin, Phone, Mail } from 'lucide-reac
 import { PERSONAL_INFO } from '../data/portfolioData';
 import developerHeroAvatar from '../assets/images/avatar.png';
 import { downloadResumeDirectly } from '../utils/downloadResume';
+import { HeroParticleCanvas } from './HeroParticleCanvas';
 
 interface HeroProps {
   isDarkMode: boolean;
   onOpenResume: () => void;
-  onNavigateToContact: () => void;
 }
 
 const DYNAMIC_TITLES = [
@@ -17,7 +17,7 @@ const DYNAMIC_TITLES = [
   'Event Streaming & Database Engineer'
 ];
 
-export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume, onNavigateToContact }) => {
+export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume }) => {
   const [titleIndex, setTitleIndex] = useState(0);
   const [fadeState, setFadeState] = useState(true);
 
@@ -36,6 +36,9 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume, onNavigate
 
   return (
     <section id="hero" className="relative min-h-screen pt-28 sm:pt-36 pb-16 flex items-center justify-center overflow-hidden bg-grid-pattern">
+      {/* Interactive Responsive Canvas Particle System */}
+      <HeroParticleCanvas isDarkMode={isDarkMode} />
+
       {/* Ambient Radial Soft Glows */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#20938a]/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#14645e]/15 rounded-full blur-[140px] pointer-events-none" />
@@ -78,11 +81,14 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode, onOpenResume, onNavigate
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
-                onClick={() => onNavigateToContact()}
-                className="group relative px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#0d9488] via-[#0f766e] to-[#115e59] text-white font-semibold text-sm shadow-lg shadow-teal-500/20 dark:shadow-[#20938a]/10 hover:shadow-teal-500/30 dark:hover:shadow-[#20938a]/25 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2.5 overflow-hidden"
+                onClick={() => {
+                  const el = document.getElementById('projects');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="group relative px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#0d9488] via-[#0f766e] to-[#115e59] text-white font-semibold text-sm shadow-lg shadow-teal-500/20 dark:shadow-[#20938a]/10 hover:shadow-teal-500/30 dark:hover:shadow-[#20938a]/25 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2.5 overflow-hidden cursor-pointer"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Get In Touch
+                  Explore Projects
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
