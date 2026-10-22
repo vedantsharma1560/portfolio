@@ -88,9 +88,9 @@ export const AskVedantAI: React.FC = () => {
         text: m.text
       }));
 
-      // Abort after 6 seconds to prevent UI hangs
+      // Allow up to 20 seconds for comprehensive AI generation
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 6000);
+      const timeoutId = setTimeout(() => controller.abort(), 20000);
 
       const response = await fetch('/api/chat', {
         method: 'POST',

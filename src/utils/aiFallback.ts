@@ -8,8 +8,15 @@ export function getClientPortfolioAnswer(query: string): string {
   const q = query.toLowerCase().trim();
 
   // Greetings & casual warm-ups
-  if (/^(hi|hello|hey|greetings|good morning|good afternoon|good evening|namaste|sup|yo|hiya|howdy)\b/i.test(q)) {
-    return `Hello! 👋 I'm **Ask Vedant AI**, your virtual guide to Vedant Sharma's interactive portfolio.
+  if (
+    q.includes('how are you') ||
+    q.includes('how are things') ||
+    q.includes('how do you do') ||
+    q.includes('what’s up') ||
+    q.includes("what's up") ||
+    /^(hi|hello|hey|greetings|good morning|good afternoon|good evening|namaste|sup|yo|hiya|howdy)\b/i.test(q)
+  ) {
+    return `Hello! 👋 I'm doing great, thank you for asking! I'm **Ask Vedant AI**, your virtual guide to Vedant Sharma's interactive portfolio.
 
 Vedant is an enterprise Full Stack Developer & Systems Architect with **${PERSONAL_INFO.stats[0].value} years** (${PERSONAL_INFO.stats[0].count} yrs) of production experience across Angular, React, Node.js, Spring Boot, Apache Kafka, and cloud microservices.
 

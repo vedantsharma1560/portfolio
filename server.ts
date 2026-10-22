@@ -70,8 +70,15 @@ function getFallbackResponse(query: string): string {
   const q = query.toLowerCase().trim();
 
   // Greetings & casual warm-ups
-  if (/^(hi|hello|hey|greetings|good morning|good afternoon|good evening|namaste|sup|yo|hiya|howdy)\b/i.test(q)) {
-    return `Hello! 👋 I'm **Ask Vedant AI**, your virtual guide to Vedant Sharma's interactive portfolio.
+  if (
+    q.includes('how are you') ||
+    q.includes('how are things') ||
+    q.includes('how do you do') ||
+    q.includes('what’s up') ||
+    q.includes("what's up") ||
+    /^(hi|hello|hey|greetings|good morning|good afternoon|good evening|namaste|sup|yo|hiya|howdy)\b/i.test(q)
+  ) {
+    return `Hello! 👋 I'm doing great, thank you for asking! I'm **Ask Vedant AI**, your virtual guide to Vedant Sharma's interactive portfolio.
 
 Vedant is a Full Stack Developer & Systems Architect with **3.8+ years** of enterprise engineering experience specializing in Angular, React, Node.js, Spring Boot, Apache Kafka, and cloud microservices.
 
@@ -294,7 +301,7 @@ Is there a specific engineering project or skillset of his you'd like to explore
   }
 
   // Polite general fallback acknowledging their query
-  return `Vedant Sharma is a Full Stack Developer & Systems Architect with 3.5+ years of experience across Angular, React, Node.js, Spring Boot, Kafka, and enterprise databases.
+  return `Vedant Sharma is a Full Stack Developer & Systems Architect with 3.8+ years of experience across Angular, React, Node.js, Spring Boot, Kafka, and enterprise databases.
 
 I can provide technical specifics on:
 • His **enterprise projects** (SSC Exam Vault, Unnati Insurance, xNet HRMS, Metaco)
@@ -305,14 +312,14 @@ What would you like to know more about?`;
 }
 
 // Helper to execute generateContent with a timeout
-async function generateWithTimeout(ai: GoogleGenAI, model: string, contents: any, timeoutMs = 8000): Promise<string> {
+async function generateWithTimeout(ai: GoogleGenAI, model: string, contents: any, timeoutMs = 12000): Promise<string> {
   const generatePromise = ai.models.generateContent({
     model,
     contents,
     config: {
       systemInstruction: SYSTEM_INSTRUCTION,
       temperature: 0.6,
-      maxOutputTokens: 700,
+      maxOutputTokens: 600,
     }
   }).then((res) => res.text || '');
 
@@ -366,16 +373,16 @@ app.post('/api/chat', async (req, res) => {
         parts: [{ text: message }]
       });
 
-      // Try models in order of speed and stability:
-      // 1. gemini-3.5-flash-lite (fastest, ~1s latency, highly available)
-      // 2. gemini-flash-latest (general flash alias fallback)
-      // 3. gemini-3.8-flash
-      const candidateModels = ['gemini-3.5-flash-lite', 'gemini-flash-latest', 'gemini-3.8-flash'];
+      // Try models in order of verified speed and stability:
+      // 1. gemini-3.1-flash-lite (fastest lite model)
+      // 2. gemini-3.8-flash (standard high quality flash model)
+      // 3. gemini-flash-latest (general flash alias)
+      const candidateModels = ['gemini-3.1-flash-lite', 'gemini-3.8-flash', 'gemini-flash-latest'];
       let replyText = '';
 
       for (const model of candidateModels) {
         try {
-          replyText = await generateWithTimeout(ai, model, contents, 5000);
+          replyText = await generateWithTimeout(ai, model, contents, 12000);
           if (replyText && replyText.trim().length > 0) {
             break;
           }
