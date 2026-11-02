@@ -12,9 +12,31 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
-// AI Studio requires the dev server to always run on port 3000.
-// Only standalone production containers use process.env.PORT.
-const PORT = isProd && process.env.PORT ? Number(process.env.PORT) : 3000;
+
+// Support CLI flags (--port and --host) or environment variables
+function getPort(): number {
+  const portArgIndex = process.argv.indexOf('--port');
+  if (portArgIndex !== -1 && process.argv[portArgIndex + 1]) {
+    const parsed = parseInt(process.argv[portArgIndex + 1], 10);
+    if (!isNaN(parsed)) return parsed;
+  }
+  if (process.env.PORT) {
+    const parsed = parseInt(process.env.PORT, 10);
+    if (!isNaN(parsed)) return parsed;
+  }
+  return 3000;
+}
+
+function getHost(): string {
+  const hostArgIndex = process.argv.indexOf('--host');
+  if (hostArgIndex !== -1 && process.argv[hostArgIndex + 1]) {
+    return process.argv[hostArgIndex + 1];
+  }
+  return '0.0.0.0';
+}
+
+const PORT = getPort();
+const HOST = getHost();
 
 app.use(express.json());
 
@@ -410,7 +432,10 @@ app.post('/api/chat', async (req, res) => {
 async function startServer() {
   if (!isProd) {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: false,
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
@@ -422,8 +447,8 @@ async function startServer() {
     });
   }
 
-  const server = app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running at http://0.0.0.0:${PORT} (${isProd ? 'production' : 'development'})`);
+  const server = app.listen(PORT, HOST, () => {
+    console.log(`Server running at http://${HOST}:${PORT} (${isProd ? 'production' : 'development'})`);
   });
 
   server.on('error', (err: any) => {
@@ -431,4 +456,14 @@ async function startServer() {
   });
 }
 
-startServer();
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught exception in server process:', err);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error('Unhandled rejection in server process:', reason);
+});
+
+startServer().catch((err) => {
+  console.error('Failed to start server:', err);
+});
